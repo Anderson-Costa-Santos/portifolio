@@ -10,34 +10,17 @@ body {
   color: #e5e7eb;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.header h1 {
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.header h2 {
-  font-size: 22px;
-  color: #38bdf8;
-  margin: 10px 0;
-}
-
-.header p {
-  max-width: 600px;
-  margin: 20px auto;
-  color: #94a3b8;
-}
 
 .links a {
-  margin: 0 10px;
+  margin: 10px;
   color: #38bdf8;
   text-decoration: none;
   font-weight: 600;
+}
+
+.links{
+    margin-top: 20px;
+    
 }
 
 /* PROJETOS */
@@ -155,7 +138,7 @@ body {
 .tech-icons {
   display: flex;
   gap: 12px;
-  padding: 0 20px 10px;
+  padding: 0 0 10px;
 }
 
 .tech-icons i {

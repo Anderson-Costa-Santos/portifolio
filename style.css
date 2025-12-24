@@ -12,15 +12,14 @@ body {
 
 
 .links a {
-  margin: 10px;
+  margin: 0px 10px;
   color: #38bdf8;
   text-decoration: none;
   font-weight: 600;
 }
 
 .links{
-    margin-top: 20px;
-    
+    margin-top: 20px; 
 }
 
 /* PROJETOS */
@@ -138,7 +137,7 @@ body {
 .tech-icons {
   display: flex;
   gap: 12px;
-  padding: 0 0 10px;
+  padding: 0 20px 10px;
 }
 
 .tech-icons i {

@@ -1,84 +1,111 @@
-// ====== PRÉLOADER FUNCIONAL ======
+// ===================== PRELOADER =====================
 const preloader = document.getElementById("preloader");
-const preloaderBar = document.querySelector(".preloader-bar");
+const preloaderBar = preloader.querySelector(".preloader-bar");
+const preloaderPercent = preloader.querySelector(".preloader-percent");
 
-// Criar elemento de porcentagem dentro do preloader (se ainda não existir no HTML)
-let preloaderPercent = preloader.querySelector(".preloader-percent");
-if (!preloaderPercent) {
-    preloaderPercent = document.createElement("div");
-    preloaderPercent.classList.add("preloader-percent");
-    preloaderPercent.style.position = "absolute";
-    preloaderPercent.style.top = "65%";
-    preloaderPercent.style.width = "100%";
-    preloaderPercent.style.textAlign = "center";
-    preloaderPercent.style.fontSize = "18px";
-    preloaderPercent.style.color = "#38bdf8";
-    preloaderPercent.style.fontFamily = "'Inter', sans-serif";
-    preloader.appendChild(preloaderPercent);
-}
-
-// Simulação de carregamento
 let progress = 0;
 const fakeLoad = setInterval(() => {
-    progress += Math.random() * 5; // aumenta de forma irregular
-    if (progress >= 100) progress = 100;
-
-    // Atualiza barra e porcentagem
-    gsap.to(preloaderBar, { width: progress + "%", duration: 0.3, ease: "power1.out" });
-    preloaderPercent.textContent = Math.floor(progress) + "%";
-
-    // Quando chega em 100%
-    if (progress === 100) {
-        clearInterval(fakeLoad);
-        gsap.to(preloader, { opacity: 0, duration: 0.5, onComplete: () => preloader.style.display = "none" });
-        initAnimations(); // inicia as animações da página após o preloader
-    }
+  progress += Math.random() * 5;
+  if (progress >= 100) progress = 100;
+  preloaderBar.style.width = progress + "%";
+  preloaderPercent.textContent = Math.floor(progress) + "%";
+  if (progress === 100) {
+    clearInterval(fakeLoad);
+    gsap.to(preloader, { opacity: 0, duration: 0.5, onComplete: () => preloader.style.display = "none" });
+    initAnimations();
+  }
 }, 100);
 
-// ====== FUNÇÃO PARA ANIMAÇÕES DA PÁGINA ======
+
+// ===================== FUNÇÃO PRINCIPAL =====================
 function initAnimations() {
-    // ====== FOTO GIRANDO ESTILO DISCO ======
-    const photo = document.querySelector(".about-photo");
-    if (photo) {
-        photo.addEventListener("mouseenter", () => {
-            gsap.to(photo, { rotationY: 180, duration: 1, ease: "power2.out" });
-        });
-        photo.addEventListener("mouseleave", () => {
-            gsap.to(photo, { rotationY: 0, duration: 1, ease: "power2.out" });
-        });
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sections = document.querySelectorAll(".stage > section");
+  
+  // Inicializa todas as seções invisíveis exceto a primeira
+  sections.forEach((sec, i) => {
+    if(i === 0){
+      sec.style.opacity = 1;
+      sec.style.pointerEvents = "auto";
+      sec.style.transform = "scale(1)";
+    } else {
+      sec.style.opacity = 0;
+      sec.style.pointerEvents = "none";
+      sec.style.transform = "scale(1.2)";
+    }
+  });
+
+  // Timeline controlada pelo scroll
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scroll-wrapper",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true
+    }
+  });
+
+  sections.forEach((sec, i) => {
+    if(i === 0) return; // primeira seção já visível
+
+    const prev = sections[i-1];
+
+    // Fade out da seção anterior + fade in da atual
+    tl.to(prev, {
+      scale: 0.6,
+      opacity: 0,
+      duration: 1,
+      pointerEvents: "none"
+    });
+
+    tl.to(sec, {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      pointerEvents: "auto"
+    }, "<"); // "<" sincroniza com fade out
+  });
+
+  // Pequeno tempo extra no final para explorar conteúdo
+  tl.to({}, { duration: 2 });
+
+
+  // ===================== CARROSSEL CONTÍNUO =====================
+  const projectTrack = document.querySelector(".project-track");
+  if(projectTrack){
+    const cards = Array.from(projectTrack.children);
+    // duplicar cards para loop contínuo
+    cards.forEach(card => projectTrack.appendChild(card.cloneNode(true)));
+    let currentX = 0;
+    let speed = 0.3;
+
+    function animateCarousel() {
+      currentX -= speed;
+      if(currentX <= -projectTrack.scrollWidth/2) currentX = 0;
+      gsap.set(projectTrack, { x: currentX });
+      requestAnimationFrame(animateCarousel);
+    }
+    animateCarousel();
+
+    // ===================== BOTÕES LATERAIS =====================
+    const prevBtn = document.querySelector(".carousel-nav.prev");
+    const nextBtn = document.querySelector(".carousel-nav.next");
+
+    if(prevBtn){
+      prevBtn.addEventListener("click", () => currentX += 300); // move 1 card
+    }
+    if(nextBtn){
+      nextBtn.addEventListener("click", () => currentX -= 300);
     }
 
-    // ====== ANIMAÇÕES DE SCROLL COM GSAP ======
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animar cards de projeto
-    gsap.utils.toArray(".project-card").forEach((card) => {
-        gsap.from(card, {
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-            duration: 0.6,
-            scrollTrigger: {
-                trigger: card,
-                start: "top 80%",
-                end: "bottom 60%",
-                toggleActions: "play none none reverse"
-            }
-        });
+    // ===================== CLIQUE NOS CARDS =====================
+    const allCards = projectTrack.querySelectorAll(".project-card");
+    allCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const demoUrl = card.getAttribute("data-demo"); // usar atributo data-demo no HTML
+        if(demoUrl) window.open(demoUrl, "_blank");
+      });
     });
-
-    // Animar texto do About
-    gsap.utils.toArray(".about-text p, .about-text h3").forEach((elem) => {
-        gsap.from(elem, {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            stagger: 0.1,
-            scrollTrigger: {
-                trigger: elem,
-                start: "top 90%",
-                toggleActions: "play none none reverse"
-            }
-        });
-    });
+  }
 }

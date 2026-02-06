@@ -5,190 +5,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anderson Costa Santos | Web Developer</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
     <!-- PRELOADER -->
     <div id="preloader">
-        <svg width="500" height="160" viewBox="0 0 500 160">
-            <text x="50%" y="60" dominant-baseline="middle" text-anchor="middle" class="preloader-text">
+        <svg width="400" height="80">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="preloader-text">
                 PORTFÓLIO
             </text>
-            <rect  y="100" height="12" class="preloader-bar"  />
+            <rect y="60" height="8" class="preloader-bar" />
         </svg>
-    
+        <div class="preloader-percent">0%</div>
     </div>
 
-    <!-- SOBRE MIM -->
-    <section class="about">
-        <div class="about-container">
-            
-                <img src="assets/Gemini_Generated_Image_cepghqcepghqcepg.png" alt="Foto de Anderson Costa Santos"
+    <!-- Scroll gigante para controlar animação -->
+    <div class="scroll-wrapper"></div>
+
+    <!-- Palco fixo -->
+    <div class="stage">
+
+        <!-- Página About -->
+        <section class="about section ">
+            <div class="about-container">
+                <img src="assets/Gemini_Generated_Image_cepghqcepghqcepg.png" alt="Foto de Anderson"
                     class="about-photo">
-            
-            <div class="about-text">
-                <h3>Anderson Costa Santos</h3>
-                <p>
-                    Sou desenvolvedor web com foco em interfaces modernas, usabilidade
-                    e construção de projetos reais. Tenho experiência prática em HTML,
-                    CSS e JavaScript, criando soluções funcionais e visualmente profissionais.
-                </p>
-                <p>
-                    Estou atualmente à procura de oportunidades onde possa aplicar
-                    e evoluir as minhas competências em desenvolvimento web.
-                </p>
-
-                <div class="tech-icons">
-                    <i class="fa-brands fa-html5" title="HTML5"></i>
-                    <i class="fa-brands fa-css3-alt" title="CSS3"></i>
-                    <i class="fa-brands fa-js" title="JavaScript"></i>
-                    <i class="fa-brands fa-react" title="React"></i>
-                    <i class="fa-brands fa-node-js" title="Node.js"></i>
-                    <i class="fa-brands fa-git-alt" title="Git"></i>
-                    <i class="fa-brands fa-github" title="GitHub"></i>
-                    <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
-                    <i class="fa-solid fa-bolt" title="Electron"></i>
-                    <i class="fa-solid fa-fire" title="Firebase"></i>
-                    <i class="fa-solid fa-database" title="MongoDB (NoSQL)"></i>
-                </div>
-                <div class="links">
-                    <a href="https://github.com/Anderson-Costa-Santos" target="_blank">GitHub</a>
-                    <a href="mailto:oydny@hotmail.com">Email</a>
+                <div class="about-text">
+                    <h3>Anderson Costa Santos</h3>
+                    <p>Sou desenvolvedor web com foco em interfaces modernas, usabilidade e construção de projetos
+                        reais.</p>
+                    <p>Atualmente à procura de oportunidades para evoluir minhas competências em desenvolvimento web.
+                    </p>
+                    <div class="tech-icons">
+                        <i class="fa-brands fa-html5" title="HTML5"></i>
+                        <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                        <i class="fa-brands fa-js" title="JavaScript"></i>
+                        <i class="fa-brands fa-react" title="React"></i>
+                        <i class="fa-brands fa-node-js" title="Node.js"></i>
+                        <i class="fa-brands fa-git-alt" title="Git"></i>
+                        <i class="fa-brands fa-github" title="GitHub"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PROJETOS -->
-    <section class="projects">
-        <h3>Projetos</h3>
-        <div class="project-grid"> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/HERO.png" alt="Pagina de videos">
-                <h4>Stranger Things Experience</h4>
-                <p>Página interativa baseada no universo de Stranger Things, com experiência imersiva, escolhas de cidades e visual temático inspirado na série.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i class="fa-brands fa-react"
-                        title="React"></i> <i class="fa-brands fa-node-js" title="Node.js"></i> <i
-                        class="fa-brands fa-js" title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/projetoStranger/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/projetoStranger"
-                        target="_blank">GitHub</a> </div>
+        <!-- Página Projetos -->
+        <section class="projects section">
+            <h2 class="projects-title">PROJETOS</h2>
+            <div class="project-carousel">
+                <div class="carousel-controls">
+                    <div class="carousel-nav prev" id="prev"></div>
+                    <div class="carousel-nav next" id="next"></div>
+                </div>
+                <div class="project-track">
+                    <a href="https://anderson-costa-santos.github.io/projetoStranger/" target="_blank"
+                        class="project-card">
+                        <img src="assets/HERO.png" alt="Stranger Things Experience">
+                        <h4>Stranger Things Experience</h4>
+                        <p>Página interativa baseada no universo de Stranger Things, com animações e interatividade.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/todoprojeto/" target="_blank" class="project-card">
+                        <img src="assets/TODO.png" alt="To Do List">
+                        <h4>To Do List</h4>
+                        <p>Aplicativo React para gerenciamento de tarefas, com CRUD e persistência local.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/riderapp/" target="_blank" class="project-card">
+                        <img src="assets/app ride.png" alt="Monitoramento de Corridas">
+                        <h4>Monitoramento de Corridas</h4>
+                        <p>Aplicação web que permite registrar e visualizar percursos de corridas em mapas interativos.
+                        </p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/memoryGame/" target="_blank" class="project-card">
+                        <img src="assets/jogo da memoria.jpg" alt="">
+                        <h4>Memory Game</h4>
+                        <p>Jogo da memória clássico com cartas virando ao clique.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/projeto-pagina-de-videos/" target="_blank"
+                        class="project-card">
+                        <img src="assets/pagina videos.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/projeto-digimon/" target="_blank"
+                        class="project-card">
+                        <img src="assets/digimon.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/pagina-de-vendas/" target="_blank"
+                        class="project-card">
+                        <img src="assets/Pagina de vendas.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/restaurante-canadacChicken/" target="_blank"
+                        class="project-card">
+                        <img src="assets/canada chiken.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/BarbecueMeter/" target="_blank"
+                        class="project-card">
+                        <img src="assets/churrasco.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <a href="https://anderson-costa-santos.github.io/portifolio/" target="_blank" class="project-card">
+                        <img src="assets/portifolio.jpg" alt="">
+                        <h4>VideoHub</h4>
+                        <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas.</p>
+                    </a>
+                    <!-- Você pode duplicar ou adicionar mais cards aqui -->
+                </div>
             </div>
-            <div class="project-card"> <img src="assets/TODO.png" alt="Pagina de videos">
-                <h4>To Do List</h4>
-                <p>Todo List em React: aplicativo para adicionar, marcar como concluído e remover tarefas, com
-                    persistência no navegador via localStorage e design responsivo.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i class="fa-brands fa-react"
-                        title="React"></i> <i class="fa-brands fa-node-js" title="Node.js"></i> <i
-                        class="fa-brands fa-js" title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/todoprojeto/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/todoprojeto"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/app ride.png" alt="Pagina de videos">
-                <h4>Monitoramento de Corridas</h4>
-                <p>Aplicação web que permite registrar e visualizar percursos de corridas usando GPS. Ideal para
-                    acompanhar e analisar atividades de mobilidade.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-bootstrap" title="Bootstrap"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/riderapp/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/riderapp"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/jogo da memoria.jpg" alt="Memory Game">
-                <h4>Memory Game</h4>
-                <p>Jogo da memória clássico com cartas virando ao clique. Exercício de lógica, eventos e manipulação de
-                    elementos HTML via JavaScript.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/memoryGame/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/memoryGame"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/Pagina de vendas.jpg" alt="Pagina de vendas">
-                <h4>Landing Page de Vendas</h4>
-                <p>Landing page de produto cosmético natural, destacando técnicas de design responsivo, CTA, animações e
-                    integração com formulário de contato.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/pagina-de-vendas/"
-                        target="_blank">Live Demo</a> <a
-                        href="https://github.com/Anderson-Costa-Santos/projeto-pagina-de-videos"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/pagina videos.jpg" alt="VideoHub">
-                <h4>VideoHub</h4>
-                <p>Página de vídeos responsiva, mostrando cards de vídeo com título, descrição e miniaturas. Desenvolve
-                    layout CSS moderno e interatividade básica em JS.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/projeto-pagina-de-videos/"
-                        target="_blank">Live Demo</a> <a
-                        href="https://github.com/Anderson-Costa-Santos/projeto-pagina-de-videos"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/canada chiken.jpg" alt="Canada Chicken">
-                <h4>Sistema de Pedidos Online</h4>
-                <p>Site completo de restaurante com sistema de pedidos inspirado no McDonald's. Desenvolvido em HTML,
-                    CSS e JS, com interface moderna, cards de produtos e formulário de pedidos.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a
-                        href="https://anderson-costa-santos.github.io/restaurante-canadacChicken/" target="_blank">Live
-                        Demo</a> <a href="https://github.com/Anderson-Costa-Santos/restaurante-canadacChicken"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/churrasco.jpg" alt="Barbecue Meter">
-                <h4>Barbecue Meter</h4>
-                <p>Aplicação interativa que calcula e recomenda a quantidade ideal de carne e bebidas para churrascos,
-                    usando HTML, CSS e JavaScript. Desenvolve lógica, manipulação de DOM e cálculos dinâmicos.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/BarbecueMeter/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/BarbecueMeter"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/digimon.jpg" alt="Digimon Encyclopedia">
-                <h4>Digimon Encyclopedia</h4>
-                <p>Página interativa de personagens Digimon, usando HTML, CSS e JavaScript. Explora grid layouts,
-                    animações simples e manipulação de dados.</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/projeto-digimon/"
-                        target="_blank">Live Demo</a> <a href="https://github.com/Anderson-Costa-Santos/projeto-digimon"
-                        target="_blank">GitHub</a> </div>
-            </div> <!-- Repete para outros projetos --> <!-- Projeto -->
-            <div class="project-card"> <img src="assets/portifolio.jpg" alt="Portfólio Profissional">
-                <h4>Portfólio Profissional</h4>
-                <p>Portfólio pessoal desenvolvido com HTML, CSS e JavaScript</p>
-                <div class="tech-icons"> <i class="fa-brands fa-html5" title="HTML5"></i> <i
-                        class="fa-brands fa-css3-alt" title="CSS3"></i> <i class="fa-brands fa-js"
-                        title="JavaScript"></i> </div>
-                <div class="project-links"> <a href="https://anderson-costa-santos.github.io/portifolio/"
-                        target="_blank">Live Demo</a> <a
-                        href="https://github.com/Anderson-Costa-Santos/projeto-pagina-de-videos"
-                        target="_blank">GitHub</a> </div>
-            </div>
-        </div>
-    </section>
+        </section>
+        <section class="skills section"></section>
+        <section class="contact section"></section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        © 2025 • Desenvolvido por Anderson Costa Santos
-    </footer>
-
-    <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="script.js"></script>
 </body>
 
